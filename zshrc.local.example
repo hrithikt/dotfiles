@@ -1,0 +1,21 @@
+# .zshrc.local.example
+#
+# Copy to ~/.zshrc.local and fill in. That file is gitignored — it is where
+# machine-specific and employer-specific shell config belongs, so that nothing
+# job-specific ever lands in this repo.
+#
+#   cp ~/dotfiles/zsh/.zshrc.local.example ~/.zshrc.local
+#
+# Sourced from the end of ~/.zshrc.
+
+# --- Git identity switching -------------------------------------------------
+# This machine keeps a work identity as the git global default and overrides it
+# per-repo for personal work. These set user.email in the *current* repo only.
+
+alias gw='git config user.email "you@work-employer.example"'  # set work identity — fill in per employer
+alias gp='git config user.email "hrithikt1999@gmail.com"'     # set personal identity
+alias gwho='git config user.email'                            # check current identity
+
+# --- Anything employer-specific goes below ----------------------------------
+# Internal tooling, VPN helpers, private registry auth, project shortcuts, etc.
+# Keep it here, never in ~/dotfiles.

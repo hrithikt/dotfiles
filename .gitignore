@@ -1,0 +1,103 @@
+# =============================================================================
+# Secrets — nothing in these categories may ever be committed.
+# =============================================================================
+
+# --- SSH private keys ---------------------------------------------------------
+# Only the config TEMPLATE lives in this repo (ssh/.ssh/config.template).
+# Private keys are copied or regenerated per machine, never stored here.
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+id_*
+*.pem
+*.key
+*.ppk
+*_rsa
+*_dsa
+*_ecdsa
+*_ed25519
+known_hosts
+authorized_keys
+# ...but public keys are safe by definition.
+!*.pub
+
+# --- Environment files --------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+
+# --- API tokens and credentials -----------------------------------------------
+.netrc
+_netrc
+.npmrc
+.pypirc
+.docker/config.json
+credentials.json
+token.json
+*_token
+*.token
+.zsh_secrets
+secrets.sh
+secrets.yml
+secrets.yaml
+
+# --- AWS / cloud credentials --------------------------------------------------
+.aws/
+.aws/credentials
+.aws/config
+.gcp/
+gcloud/credentials.db
+gcloud/access_tokens.db
+.azure/
+.kube/config
+.boto
+
+# --- Tool state that embeds auth ----------------------------------------------
+# gh stores its OAuth token in hosts.yml; config.yml would be safe but is not
+# tracked here anyway.
+.config/gh/hosts.yml
+gh/hosts.yml
+# neonctl, openusage and friends keep live credentials in these.
+.config/neonctl/credentials.json
+.config/openusage/
+# atuin: the sync key decrypts your entire shell history, and the .db files
+# are that history.
+.config/atuin/key
+atuin/.config/atuin/key
+*.db
+*.db-shm
+*.db-wal
+
+# =============================================================================
+# Machine-local, not secret but not shareable either
+# =============================================================================
+
+# Employer-specific and per-machine shell config. Lives at the repo root rather
+# than inside the zsh/ stow package, so stow never links it into $HOME.
+# zshrc.local.example IS tracked; the real .zshrc.local never is.
+.zshrc.local
+zsh/.zshrc.local
+
+# Created by install.sh when it moves a conflicting file out of the way.
+*.backup
+
+# Shell and REPL history
+.*_history
+*_history
+.viminfo
+
+# =============================================================================
+# Noise
+# =============================================================================
+
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+*.swp
+*.swo
+*~
+node_modules/

@@ -1,0 +1,19 @@
+# Global git config.
+#
+# NOTE: [user] is deliberately left unset here. The previous machine had an
+# employer identity as the global default; that does not travel with this repo.
+# Set it explicitly on each new machine so you never silently commit under a
+# stale identity:
+#
+#   git config --global user.name  "Your Name"
+#   git config --global user.email "you@example.com"
+#
+# Per-repo overrides (see zsh/.zshrc.local.example) then switch identity for
+# individual repos with `gw` / `gp`.
+
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
